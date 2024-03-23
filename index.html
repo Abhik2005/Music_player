@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div class="main">
+    <div class="musicPlayer relative overflow-hidden">
+      <div
+        class="menu w-full h-full bg-blue-100 flex flex-col absolute top-0 left-0 z-10 -translate-x-[100%] transition-all duration-500 ease-in-out px-2 gap-5">
+        <div class="w-full py-3 px-5 flex items-center justify-between border-b-[1px] border-zinc-600">
+          <h1 class="text-2xl font-bold">
+            User's
+          </h1>
+          <i class="close ri-close-line text-3xl text-black cursor-pointer"></i>
+        </div>
+        <h1 class="text-xl font-semibold text-black"">Songs Catagory</h1>
+          <div class=" w-full py-3 px-5 flex items-center justify-between border-b-[1px] border-zinc-600">
+          <h1 class="text-2xl font-bold">
+            Bengali
+          </h1>
+          <i class="b ri-arrow-right-s-line text-3xl text-black cursor-pointer"></i>
+      </div>
+      <div class=" w-full py-3 px-5 flex items-center justify-between border-b-[1px] border-zinc-600">
+        <h1 class="text-2xl font-bold">
+          Hindi
+        </h1>
+        <i class="h ri-arrow-right-s-line text-3xl text-black cursor-pointer"></i>
+      </div>
+      <div class=" w-full py-3 px-5 flex items-center justify-between border-b-[1px] border-zinc-600">
+        <h1 class="text-2xl font-bold">
+          English
+        </h1>
+        <i class="e ri-arrow-right-s-line text-3xl text-black cursor-pointer"></i>
+      </div>
+      <div class=" w-full py-3 px-5 flex items-center justify-between border-b-[1px] border-zinc-600">
+        <h1 class="text-2xl font-bold">
+          Punjabi
+        </h1>
+        <i class="p ri-arrow-right-s-line text-3xl text-black cursor-pointer"></i>
+      </div>
+    </div>
+    <div
+      class="bengali w-full h-full bg-blue-100 flex flex-col absolute top-0 left-0 z-10 -translate-x-[100%] transition-all duration-500 ease-in-out px-2">
+      <div class="w-full py-3 px-5 flex items-center justify-between border-b-[1px] border-zinc-600">
+        <i class="bengaliArrow ri-close-line text-3xl text-black cursor-pointer"></i>
+      </div>
+      <div class="bengaliSongCart w-full p-5 flex flex-col gap-2 overflow-auto">
+
+      </div>
+    </div>
+    <div
+      class="hindi w-full h-full bg-blue-100 flex flex-col absolute top-0 left-0 z-10 -translate-x-[100%] transition-all duration-500 ease-in-out px-2 gap-5">
+      <div class="w-full py-3 px-5 flex items-center justify-between border-b-[1px] border-zinc-600">
+        <i class="hindiArrow ri-close-line text-3xl text-black cursor-pointer"></i>
+      </div>
+
+<div class="hindiSongCart w-full p-5 flex flex-col gap-2 overflow-auto">
+
+</div>
+    </div>
+    <div
+      class="english w-full h-full bg-blue-100 flex flex-col absolute top-0 left-0 z-10 -translate-x-[100%] transition-all duration-500 ease-in-out px-2 gap-5">
+      <div class="w-full py-3 px-5 flex items-center justify-between border-b-[1px] border-zinc-600">
+        <i class="englishArrow ri-close-line text-3xl text-black cursor-pointer"></i>
+      </div>
+      <div class="englishSongCart w-full p-5 flex flex-col gap-2 overflow-auto">
+
+      </div>
+    </div>
+    <div
+      class="punjabi w-full h-full bg-blue-100 flex flex-col absolute top-0 left-0 z-10 -translate-x-[100%] transition-all duration-500 ease-in-out px-2 gap-5">
+      <div class="w-full py-3 px-5 flex items-center justify-between border-b-[1px] border-zinc-600">
+        <i class="punjabiArrow ri-close-line text-3xl text-black cursor-pointer"></i>
+      </div>
+      <div class="punjabiSongCart w-full p-5 flex flex-col gap-2 overflow-auto">
+
+      </div>
+    </div>
+
+    <header>
+      <i class="menuBtn ri-menu-2-fill"></i>
+      <div class="songcard hidden">
+        <input type="text" />
+      </div>
+      <i class="ri-search-2-line"></i>
+    </header>
+    <div class="musicSlider"></div>
+    <footer class=" w-full px-5  flex flex-col items-center justify-center gap-5">
+      <div class="w-full  flex items-center justify-between gap-5 py-3">
+        <span class="text-sm font-semibold text-black">00:00</span>
+        <div class="w-full h-[5px] bg-white rounded-full overflow-hidden flex items-center justify-between">
+          <div class="timeSlide w-0 h-full bg-blue-500">
+          </div>
+        </div>
+        <span class="text-sm font-semibold text-black">00:00</span>
+
+      </div>
+      <div class=" w-full py-3 flex items-center justify-center gap-10">
+        <div class="leftArrow"><i class="ri-skip-back-line"></i></div>
+        <div>
+          <i class="play ri-play-circle-line"></i><i class="pause ri-pause-circle-line hidden"></i>
+        </div>
+        <div class="rightArrow"><i class="ri-skip-forward-line"></i></div>
+      </div>
+    </footer>
+  </div>
+  <audio src="" class="hidden"></audio>
+  </div>
+  <script type="module" src="script.js"></script>
+</body>
+
+</html>
