@@ -143,7 +143,7 @@ function punjabiSongs() {
 }
 
 function musicPlay() {
-  var second = 10;
+  var second = 0;
   var minutes = 0;
   pause.style.display = "block";
   play.style.display = "none";
