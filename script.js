@@ -1,12 +1,13 @@
 import songs from './songs.js';
 
 var index = 0;
-var son;
+var son = [];
 var h1 = document.querySelector(".musicSlider>div>h1");
 var img = document.querySelector(".slider>img");
 var play = document.querySelector(".play");
 var pause = document.querySelector(".pause");
 var music = document.querySelector("audio");
+var range = document.querySelector(".range");
 
 function menuAnimation() {
   var close = document.querySelector(".close");
@@ -74,8 +75,9 @@ function imsgeAndNameAdd() {
     var imgUrl;
     var name;
     songCart.addEventListener("click", function(e) {
+      var i = e.target.parentElement.id;
 
-      son = songs[0].filter((song) => e.target.innerHTML == song.name);
+      son = songs[i].filter((song) => e.target.innerHTML == song.name);
       console.log(son[0].songUrl);
       document.querySelector(".musicSlider").innerHTML = "";
       imgUrl = son[0].imageUrl;
@@ -92,11 +94,11 @@ function bengaliSongs() {
 
   songs[0].forEach((song) => {
 
-    document.querySelector(".bengaliSongCart").innerHTML += '<div class="songCart w-full py-3 px-5 flex items-center justify-between border-b-[1px] border-zinc-200 gap-10">' +
+    document.querySelector(".bengaliSongCart").innerHTML += '<div id=0 class="songCart w-full flex items-center justify-between border-b-[1px] border-zinc-200">' +
       '<div class="w-16 h-16 rounded-full overflow-hidden bg-red-300">' +
       `<img src='${song.imageUrl}' class="w-full h-full object-cover" alt="songImage" />` +
       "</div>" +
-      `<h1 class="text-xl font-semibold">${song.name}</h1>` +
+      `<h1 id=${song.id} class="text-xl font-semibold">${song.name}</h1>` +
       "</div>";
 
   })
@@ -106,8 +108,9 @@ function bengaliSongs() {
 function hindiSongs() {
 
   songs[1].forEach((song) => {
+    console.log(song)
 
-    document.querySelector(".hindiSongCart").innerHTML += '<div class="songCart w-full py-3 px-5 flex items-center justify-between border-b-[1px] border-zinc-200">' +
+    document.querySelector(".hindiSongCart").innerHTML += '<div id=1 class="songCart w-full py-3 px-5 flex items-center justify-between border-b-[1px] border-zinc-200">' +
       '<div class="w-16 h-16 rounded-full overflow-hidden bg-red-300">' +
       `<img src=${song.songUrl} class="w-full h-full object-cover" alt="songImage" />` +
       "</div>" +
@@ -119,7 +122,7 @@ function hindiSongs() {
 
 function englishSongs() {
   songs[2].forEach((song) => {
-    document.querySelector(".englishSongCart").innerHTML = '<div class="songCart w-full py-3 px-5 flex items-center justify-between border-b-[1px] border-zinc-200">' +
+    document.querySelector(".englishSongCart").innerHTML = '<div id=2 class="songCart w-full py-3 px-5 flex items-center justify-between border-b-[1px] border-zinc-200">' +
       '<div class="w-16 h-16 rounded-full overflow-hidden bg-red-300">' +
       `<img src=${song.songUrl} class="w-full h-full object-cover" alt="songImage" />` +
       "</div>" +
@@ -132,7 +135,7 @@ function englishSongs() {
 function punjabiSongs() {
 
   songs[3].forEach((song) => {
-    document.querySelector(".punjabiSongCart").innerHTML = '<div class="songCart w-full py-3 px-5 flex items-center justify-between border-b-[1px] border-zinc-200">' +
+    document.querySelector(".punjabiSongCart").innerHTML = '<div id=3 class="songCart w-full py-3 px-5 flex items-center justify-between border-b-[1px] border-zinc-200">' +
       '<div class="w-16 h-16 rounded-full overflow-hidden bg-red-300">' +
       `<img src=${song.songUrl} class="w-full h-full object-cover" alt="songImage" />` +
       "</div>" +
@@ -163,7 +166,10 @@ function musicPlay() {
       musicPause();
       
     }
-  }, 1000)
+    range.value = minutes*60 + second;
+    range.max = Number(son[0].minutes)*60 + Number(son[0].second);
+    range.min = 0;
+  },1000)
 }
 
 function musicPause() {
