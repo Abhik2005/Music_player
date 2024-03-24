@@ -1,5 +1,7 @@
 import songs from './songs.js';
 
+var index = 0;
+var son;
 var h1 = document.querySelector(".musicSlider>div>h1");
 var img = document.querySelector(".slider>img");
 var play = document.querySelector(".play");
@@ -73,11 +75,12 @@ function imsgeAndNameAdd() {
     var name;
     songCart.addEventListener("click", function(e) {
 
-      var son = songs[0].filter((song) => e.target.innerHTML == song.name);
+      son = songs[0].filter((song) => e.target.innerHTML == song.name);
       console.log(son[0].songUrl);
       document.querySelector(".musicSlider").innerHTML = "";
       imgUrl = son[0].imageUrl;
       name = son[0].name;
+      document.querySelector(".rtime").innerText = son[0].minutes + ":" + son[0].second;
       musicSlider(imgUrl, name);
       music.src = son[0].songUrl;
       musicPlay();
@@ -95,6 +98,7 @@ function bengaliSongs() {
       "</div>" +
       `<h1 class="text-xl font-semibold">${song.name}</h1>` +
       "</div>";
+
   })
   imsgeAndNameAdd()
 }
@@ -139,9 +143,27 @@ function punjabiSongs() {
 }
 
 function musicPlay() {
+  var second = 10;
+  var minutes = 5;
   pause.style.display = "block";
   play.style.display = "none";
   music.play();
+  setInterval(function(){
+    second++;
+    if (second == 60) {
+      second = 0;
+      minutes++;
+    }
+    if (second < 10) {
+      document.querySelector(".ltime").innerText = minutes + ":" + "0" + second;
+    }else{
+      document.querySelector(".ltime").innerText = minutes + ":" + second;
+    }
+    if (minutes == son[0].minutes && second == son[0].second) {
+      musicPause();
+      
+    }
+  }, 1000)
 }
 
 function musicPause() {
@@ -150,68 +172,7 @@ function musicPause() {
   music.pause();
 }
 
-function song(song) {
-
-  var index = 0;
-
-
-
-
-
-  function forward() {
-    index++;
-    var slide = songs.filter((slide) => {
-      return slide.id == index;
-    });
-    if (index < sliderArr.length - 1) {
-      h1.innerHTML = slide[0].title;
-      img.src = slide[0].imgUrl;
-      music.src = slide[0].musicUrl;
-      musicPlay();
-    } else if (index == sliderArr.length - 1 || index == sliderArr.length) {
-      index = -1;
-      h1.innerHTML = slide[0].title;
-      img.src = slide[0].imgUrl;
-      music.src = slide[0].musicUrl;
-      musicPlay();
-    }
-  }
-
-  function backward() {
-    index--;
-    var slide = songs.filter((slide) => {
-      return slide.id == index;
-    });
-    if (index >= 0) {
-      h1.innerHTML = slide[0].title;
-      img.src = slide[0].imgUrl;
-      music.src = slide[0].musicUrl;
-      musicPlay();
-    } else if (index < 0) {
-      index = sliderArr.length - 1;
-      if (index == 3) {
-        console.log(sliderArr[3], index);
-        h1.innerHTML = sliderArr[3].title;
-        img.src = sliderArr[3].imgUrl;
-        music.src = slide[0].musicUrl;
-        musicPlay();
-      } else {
-        h1.innerHTML = slide[0].title;
-        img.src = slide[0].imgUrl;
-        music.src = slide[0].musicUrl;
-        musicPlay();
-      }
-    }
-  }
-
-  document.querySelector(".rightArrow").addEventListener("click", function() {
-    forward();
-  });
-
-  document.querySelector(".leftArrow").addEventListener("click", function() {
-    backward();
-  });
-
+function playAndPause() {
   play.addEventListener("click", function() {
     musicPlay();
   });
@@ -219,11 +180,75 @@ function song(song) {
   pause.addEventListener("click", function() {
     musicPause();
   });
-
 }
+
+function forward() {
+  index++;
+  var slide = songs.filter((slide) => {
+    return slide.id == index;
+  });
+  if (index < sliderArr.length - 1) {
+    h1.innerHTML = slide[0].title;
+    img.src = slide[0].imgUrl;
+    music.src = slide[0].musicUrl;
+    musicPlay();
+  } else if (index == sliderArr.length - 1 || index == sliderArr.length) {
+    index = -1;
+    h1.innerHTML = slide[0].title;
+    img.src = slide[0].imgUrl;
+    music.src = slide[0].musicUrl;
+    musicPlay();
+  }
+}
+
+function backward() {
+  index--;
+  var slide = songs.filter((slide) => {
+    return slide.id == index;
+  });
+  if (index >= 0) {
+    h1.innerHTML = slide[0].title;
+    img.src = slide[0].imgUrl;
+    music.src = slide[0].musicUrl;
+    musicPlay();
+  } else if (index < 0) {
+    index = sliderArr.length - 1;
+    if (index == 3) {
+      console.log(sliderArr[3], index);
+      h1.innerHTML = sliderArr[3].title;
+      img.src = sliderArr[3].imgUrl;
+      music.src = slide[0].musicUrl;
+      musicPlay();
+    } else {
+      h1.innerHTML = slide[0].title;
+      img.src = slide[0].imgUrl;
+      music.src = slide[0].musicUrl;
+      musicPlay();
+    }
+  }
+}
+
+function forWardAndBackWardBtn() {
+  document.querySelector(".rightArrow").addEventListener("click", function() {
+    console.log("forward");
+    forward();
+  });
+
+  document.querySelector(".leftArrow").addEventListener("click", function() {
+    console.log("backward");
+    backward();
+  });
+}
+
+
+
+
+
 
 menuAnimation();
 bengaliSongs();
 hindiSongs();
 englishSongs();
 punjabiSongs();
+playAndPause();
+forWardAndBackWardBtn();

@@ -12,8 +12,9 @@ var bengaliSongs = [
     name: "Ki kore bolbo Tomay",
     singer: "",
     songUrl: "Ki_Kore_Bolbo_Tomay.m4a",
-    imageUrl: "https://m.imdb.com/title/tt5373192/mediaviewer/rm160202247",
-    duration: "00:00",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT75f2Lt-DURgw7xtpwSo1e2u6dp0ba2dfvXQ&s",
+    minutes: "5",
+    second: "17"
   },
   {
     id: 2,
